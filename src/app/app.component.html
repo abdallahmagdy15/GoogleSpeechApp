@@ -1,0 +1,9 @@
+<div class="wrapper">
+    <div class="row floating-header" style="justify-content: space-between;">
+        <span class="lead">{{(isRecording)?'Listening...':''}}</span>
+        <img [src]="isRecording?'../../assets/recording.gif':'../../assets/microphone.png'" (click)="isRecording=!isRecording">
+    </div>
+    <div class="row" style="height: 100%;">
+        <textarea class="form-control circle-textarea" [value]="text" ></textarea>
+    </div>
+</div>
