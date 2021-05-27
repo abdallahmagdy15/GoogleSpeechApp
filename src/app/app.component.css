@@ -1,6 +1,17 @@
 img.icon {
     height:2rem;
     cursor: pointer;
+    
+}
+.animatedToRight{
+    animation-duration: .4s;
+    animation-name:bounceFromLeft ;
+    animation-fill-mode: both; 
+}
+.animatedBack{
+    animation-duration: .4s;
+    animation-name:bounceFromRight ;
+    animation-fill-mode: both; 
 }
 .wrapper {
     width: 100%;
@@ -27,3 +38,38 @@ img.icon {
     box-sizing: border-box;
     font-size: 1.3rem;
 }
+
+
+@keyframes bounceFromLeft {
+    0% {
+       opacity: 0;
+       transform: translateX(-35vw);
+    }
+    60% {
+       opacity: 1;
+       transform: translateX(2vw);
+    }
+    80% {
+       transform: translateX(-1vw);
+    }
+    100% {
+       transform: translateX(0);
+    }
+ } 
+
+ @keyframes bounceFromRight {
+    0% {
+       opacity: 0;
+       transform: translateX(0);
+    }
+    60% {
+       opacity: 1;
+       transform: translateX(-38vw);
+    }
+    80% {
+       transform: translateX(-33vw);
+    }
+    100% {
+       transform: translateX(-35vw);
+    }
+ } 

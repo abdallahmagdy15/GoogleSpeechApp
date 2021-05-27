@@ -8,17 +8,32 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'GoogleSpeechApp';
-  text = 'hello';
+  text = '';
   isRecording = false;
 
   constructor(public http: HttpClient) {
   }
   StartRecording() {
-    this.http.get('http://localhost:3000/api/speech-to-text/').subscribe(res => {
+    this.isRecording = true;
+    this.http.get('http://localhost:3000/api/speech-to-text/').subscribe((res) => {
       console.log(res);
-      this.text += res;
+      this.text += " " + res.text;
+      this.isRecording = false;
     },
-     err => console.error
+      err => {
+        console.log(err);
+        this.isRecording = false;
+      }
+    );
+  }
+  StopRecording() {
+    this.isRecording = false;
+    this.http.post('http://localhost:3000/api/speech-to-text/', {}).subscribe(res => {
+      console.log(res);
+    },
+      err => {
+        console.log(err);
+      }
     );
   }
 

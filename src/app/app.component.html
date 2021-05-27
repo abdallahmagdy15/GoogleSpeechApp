@@ -1,9 +1,10 @@
 <div class="wrapper">
     <div class="row floating-header" style="justify-content: space-between;">
         <span class="lead">{{(isRecording)?'Listening...':''}}</span>
-        <img class="icon" [src]="isRecording?'../../assets/recording.gif':'../../assets/microphone.png'" (click)="isRecording=!isRecording">
+        <img class="icon" [ngClass]="{'animatedToRight':isRecording,'animatedBack':!isRecording}" [src]="isRecording?'../../assets/recording.gif':'../../assets/microphone.png'"
+         (click)="isRecording?StopRecording():StartRecording()">
     </div>
     <div class="row" style="height: 100%;">
-        <textarea class="form-control circle-textarea" [(ngModel)]="text" ></textarea>
+        <textarea placeholder="Welcome to Speech Recognition App" class="form-control circle-textarea" [(ngModel)]="text" ></textarea>
     </div>
 </div>
