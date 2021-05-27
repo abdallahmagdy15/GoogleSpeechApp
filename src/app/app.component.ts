@@ -17,7 +17,11 @@ export class AppComponent {
     this.isRecording = true;
     this.http.get('http://localhost:3000/api/speech-to-text/').subscribe((res) => {
       console.log(res);
-      this.text += " " + res.text;
+      if (res.text == "clear all") {
+        this.text = "";
+      } else {
+        this.text += " " + res.text;
+      }
       this.isRecording = false;
     },
       err => {
