@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { IText } from './IText';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +16,9 @@ export class AppComponent {
   }
   StartRecording() {
     this.isRecording = true;
-    this.http.get('http://localhost:3000/api/speech-to-text/').subscribe((res) => {
+    this.http.get<IText>('http://localhost:3000/api/speech-to-text/').subscribe(res => {
       console.log(res);
-      if (res.text == "clear all") {
+      if (res.text == "clear all"|| res.text=="") {
         this.text = "";
       } else {
         this.text += " " + res.text;
